@@ -2,19 +2,9 @@
 echo === Battery Alert Setup ===
 echo.
 
-REM בדיקה אם קיימת סביבה וירטואלית
-if not exist venv (
-    echo Creating virtual environment...
-    python -m venv venv
-)
-
-REM הפעלת הסביבה הוירטואלית
-echo Activating virtual environment...
-call venv\Scripts\activate.bat
-
 REM התקנת חבילות נדרשות
 echo Installing required packages...
-pip install -r requirements.txt
+pip install playsound==1.3.0 psutil==6.1.1
 
 echo.
 echo === Configuration ===
@@ -53,7 +43,6 @@ if /i "%run_now%"=="y" (
 ) else (
     echo.
     echo To run Battery Alert later, use: python battery_alert.py
-    echo Or run this setup script again.
 )
 
 pause 
