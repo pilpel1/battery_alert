@@ -16,8 +16,10 @@ battery_alert/
 │   └── power-task-config.md  # Task Scheduler setup guide
 ├── scripts/
 │   ├── setup.bat         # Installation and configuration
-│   └── optional_quick_startup.bat  # Optional automatic startup
+│   ├── optional_quick_startup.bat  # Optional automatic startup
+│   └── uninstall.bat     # Uninstall utility
 ├── battery_alert.py      # Main program
+├── requirements.txt     # Python package dependencies
 └── LICENSE              # MIT License
 ```
 
@@ -53,6 +55,13 @@ If you want Battery Alert to start automatically with Windows, you have two opti
    - Follow the detailed instructions in `docs/power-task-config.md`
    - This gives you more control over the exact configuration
 
+## Uninstalling
+To remove Battery Alert, run `scripts/uninstall.bat`. You'll have these options:
+1. Remove only the scheduled task (if you used automatic startup)
+2. Complete uninstall (removes task and uninstalls packages)
+
+Note: Administrator privileges are required to remove the scheduled task.
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -76,8 +85,10 @@ battery_alert/
 │   └── power-task-config.md  # מדריך להגדרת מתזמן המשימות
 ├── scripts/
 │   ├── setup.bat         # התקנה והגדרות
-│   └── optional_quick_startup.bat  # הפעלה אוטומטית (אופציונלי)
+│   ├── optional_quick_startup.bat  # הפעלה אוטומטית (אופציונלי)
+│   └── uninstall.bat     # כלי להסרת התוכנה
 ├── battery_alert.py      # התוכנית הראשית
+├── requirements.txt     # תלויות Python נדרשות
 └── LICENSE              # רישיון MIT
 ```
 
@@ -112,6 +123,13 @@ python battery_alert.py
 2. **הגדרה ידנית**:
    - עקוב אחר ההוראות המפורטות בקובץ `docs/power-task-config.md`
    - זה נותן לך שליטה מלאה יותר על ההגדרות
+
+## הסרת התוכנה
+להסרת Battery Alert, הרץ את `scripts/uninstall.bat`. תהיה לך בחירה בין:
+1. הסרת המשימה המתוזמנת בלבד (אם השתמשת בהפעלה אוטומטית)
+2. הסרה מלאה (מסיר את המשימה ומסיר את החבילות המותקנות)
+
+שים לב: נדרשות הרשאות מנהל מערכת להסרת המשימה המתוזמנת.
 
 ## רישיון
 פרויקט זה מופץ תחת רישיון MIT - ראה קובץ LICENSE לפרטים נוספים. 
