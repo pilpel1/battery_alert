@@ -1,4 +1,13 @@
 @echo off
+setlocal enabledelayedexpansion
+
+REM Get the directory where the script is located
+set "SCRIPT_DIR=%~dp0"
+cd "%SCRIPT_DIR%"
+cd ..
+set "ROOT_DIR=%CD%"
+cd "%SCRIPT_DIR%"
+
 echo === Battery Alert Setup ===
 echo.
 
@@ -31,10 +40,9 @@ if "%check_interval%"=="" (
     echo Using default value: 120 seconds
 )
 
-REM Update battery_alert.py with new settings
-cd ..
-powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'TARGET_BATTERY_PERCENT = \d+', 'TARGET_BATTERY_PERCENT = %battery_percent%' } | Set-Content battery_alert.py"
-powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'CHECK_INTERVAL = \d+', 'CHECK_INTERVAL = %check_interval%' } | Set-Content battery_alert.py"
+REM Update battery_alert.py with new settings using absolute path constructed from relative position
+powershell -Command "(Get-Content '%ROOT_DIR%\battery_alert.py') | ForEach-Object { $_ -replace 'TARGET_BATTERY_PERCENT = \d+', 'TARGET_BATTERY_PERCENT = %battery_percent%' } | Set-Content '%ROOT_DIR%\battery_alert.py'"
+powershell -Command "(Get-Content '%ROOT_DIR%\battery_alert.py') | ForEach-Object { $_ -replace 'CHECK_INTERVAL = \d+', 'CHECK_INTERVAL = %check_interval%' } | Set-Content '%ROOT_DIR%\battery_alert.py'"
 
 echo.
 echo Configuration saved:
@@ -54,7 +62,8 @@ if /i "%run_now%"=="n" (
 ) else (
     echo.
     echo Starting Battery Alert...
-    python battery_alert.py
+    python "%ROOT_DIR%\battery_alert.py"
 )
 
+endlocal
 pause 

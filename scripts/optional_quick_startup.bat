@@ -1,4 +1,12 @@
 @echo off
+setlocal enabledelayedexpansion
+
+REM Get the directory where the script is located
+set "SCRIPT_DIR=%~dp0"
+cd "%SCRIPT_DIR%"
+cd ..
+set "ROOT_DIR=%CD%"
+
 echo === Battery Alert - Optional Quick Startup Setup ===
 echo.
 
@@ -20,8 +28,7 @@ echo.
 echo Current settings from battery_alert.py will be used.
 echo.
 
-cd ..
-set "SCRIPT_PATH=%CD%\battery_alert.py"
+set "SCRIPT_PATH=%ROOT_DIR%\battery_alert.py"
 set "PYTHON_PATH=python"
 
 echo Checking Python installation...
@@ -53,8 +60,8 @@ echo Creating scheduled task...
 REM Delete existing task if it exists
 schtasks /delete /tn "Battery Alert Monitor" /f >nul 2>&1
 
-REM Create new task
-schtasks /create /tn "Battery Alert Monitor" /tr "python \"%SCRIPT_PATH%\"" /sc onstart /ru "%USERNAME%" /rl highest /f
+REM Create new task with working directory set
+schtasks /create /tn "Battery Alert Monitor" /tr "cmd /c cd /d \"%ROOT_DIR%\" && python battery_alert.py" /sc minute /mo 5 /rl highest /f /RU "SYSTEM" /st 00:00
 
 if %errorLevel% equ 0 (
     echo.
@@ -70,4 +77,5 @@ if %errorLevel% equ 0 (
 echo.
 echo Note: You can still run the program manually using: python battery_alert.py
 echo.
+endlocal
 pause 

@@ -4,42 +4,44 @@ import datetime
 from playsound import playsound
 import os
 import sys
-import win32gui
-import win32con
+import ctypes
 
 # Default settings (can be changed by setup.bat)
-TARGET_BATTERY_PERCENT = 93  # Battery percentage that triggers the alert
+TARGET_BATTERY_PERCENT = 90  # Battery percentage that triggers the alert
 CHECK_INTERVAL = 120        # Time between checks in seconds
 
 def hide_console():
 	try:
-		# מקבל את החלון של ה-CMD שלנו
-		window = win32gui.GetConsoleWindow()
-		# מעביר את החלון למצב מינימלי
-		win32gui.ShowWindow(window, win32con.SW_MINIMIZE)
+		# Get console window handle and minimize it using Windows API
+		kernel32 = ctypes.WinDLL('kernel32')
+		user32 = ctypes.WinDLL('user32')
+		
+		hwnd = kernel32.GetConsoleWindow()
+		if hwnd:
+			user32.ShowWindow(hwnd, 6)  # SW_MINIMIZE = 6
 	except Exception as e:
-		print(f"שגיאה בהסתרת החלון: {str(e)}")
+		print(f"Error minimizing window: {str(e)}")
 
 def check_battery():
 	try:
 		battery = psutil.sensors_battery()
 		if battery is None:
-			print("שגיאה: לא נמצאה סוללה במחשב זה")
+			print("Error: No battery found on this system")
 			sys.exit(1)
 		return battery.percent, battery.power_plugged
 	except Exception as e:
-		print(f"שגיאה בבדיקת הסוללה: {str(e)}")
+		print(f"Error checking battery: {str(e)}")
 		sys.exit(1)
 
 def play_alert(sound_file):
 	try:
 		if not os.path.exists(sound_file):
-			print(f"שגיאה: קובץ השמע לא נמצא: {sound_file}")
+			print(f"Error: Sound file not found: {sound_file}")
 			return False
 		playsound(sound_file)
 		return True
 	except Exception as e:
-		print(f"שגיאה בהשמעת הצליל: {str(e)}")
+		print(f"Error playing sound: {str(e)}")
 		return False
 
 def alert_when_needed():
@@ -58,12 +60,12 @@ def alert_when_needed():
 			if charging and percent >= TARGET_BATTERY_PERCENT:
 				print("Battery has reached the target level. Alerting!")
 				if not play_alert(sound_file):
-					print("ממשיך לנטר למרות שגיאת השמע...")
+					print("Continuing to alert despite sound error...")
 
 			time.sleep(CHECK_INTERVAL)
 		except Exception as e:
-			print(f"שגיאה לא צפויה: {str(e)}")
-			time.sleep(CHECK_INTERVAL)  # נמשיך לנסות גם במקרה של שגיאה
+			print(f"Unexpected error: {str(e)}")
+			time.sleep(CHECK_INTERVAL)  # Continue trying even in case of error
 
 if __name__ == "__main__":
 	try:
