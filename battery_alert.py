@@ -4,10 +4,21 @@ import datetime
 from playsound import playsound
 import os
 import sys
+import win32gui
+import win32con
 
 # Default settings (can be changed by setup.bat)
 TARGET_BATTERY_PERCENT = 93  # Battery percentage that triggers the alert
 CHECK_INTERVAL = 120        # Time between checks in seconds
+
+def hide_console():
+	try:
+		# מקבל את החלון של ה-CMD שלנו
+		window = win32gui.GetConsoleWindow()
+		# מעביר את החלון למצב מינימלי
+		win32gui.ShowWindow(window, win32con.SW_MINIMIZE)
+	except Exception as e:
+		print(f"שגיאה בהסתרת החלון: {str(e)}")
 
 def check_battery():
 	try:
@@ -35,6 +46,9 @@ def alert_when_needed():
 	sound_file = os.path.join(os.path.dirname(__file__), "assets", "alert_sound.mp3")
 	print(f"Battery Alert started. Target battery level: {TARGET_BATTERY_PERCENT}%")
 	print(f"Checking every {CHECK_INTERVAL} seconds")
+	print("Window will be minimized in 3 seconds...")
+	time.sleep(3)
+	hide_console()
 	
 	while True:
 		try:

@@ -4,7 +4,9 @@ A simple utility that alerts when the battery reaches a certain percentage while
 
 ## System Requirements
 - Python 3.6 or higher
-- Windows
+- Windows 10 or higher
+- Laptop with a working battery
+- Administrator privileges (for automatic startup configuration)
 
 ## Project Structure
 ```
@@ -62,6 +64,12 @@ To remove Battery Alert, run `scripts/uninstall.bat`. You'll have these options:
 
 Note: Administrator privileges are required to remove the scheduled task.
 
+## Sound Alert Customization
+To change the alert sound:
+1. Prepare your custom MP3 file
+2. Replace `assets/alert_sound.mp3` with your file
+3. Make sure to name it exactly `alert_sound.mp3`
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -73,7 +81,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## דרישות מערכת
 - פייתון 3.6 ומעלה
-- חלונות
+- חלונות 10 ומעלה
+- מחשב נייד עם סוללה תקינה
+- הרשאות מנהל מערכת (להגדרת הפעלה אוטומטית)
 
 ## מבנה הפרויקט
 ```
@@ -130,6 +140,12 @@ python battery_alert.py
 2. הסרה מלאה (מסיר את המשימה ומסיר את החבילות המותקנות)
 
 שים לב: נדרשות הרשאות מנהל מערכת להסרת המשימה המתוזמנת.
+
+## התאמת צליל ההתראה
+כדי להחליף את צליל ההתראה:
+1. הכן קובץ MP3 לבחירתך
+2. החלף את הקובץ `assets/alert_sound.mp3` בקובץ שלך
+3. ודא שהקובץ נקרא בדיוק `alert_sound.mp3`
 
 ## רישיון
 פרויקט זה מופץ תחת רישיון MIT - ראה קובץ LICENSE לפרטים נוספים. 
