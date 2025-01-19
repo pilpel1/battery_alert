@@ -30,17 +30,12 @@ if "%check_interval%"=="" (
     echo Using default value: 120 seconds
 )
 
-REM Create config.py file
-echo # Battery Alert Settings > config.py
-echo. >> config.py
-echo # Battery percentage threshold for alert (when connected to power) >> config.py
-echo TARGET_BATTERY_PERCENT = %battery_percent% >> config.py
-echo. >> config.py
-echo # Time interval between checks (in seconds) >> config.py
-echo CHECK_INTERVAL = %check_interval% >> config.py
+REM Update battery_alert.py with new settings
+powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'TARGET_BATTERY_PERCENT = \d+', 'TARGET_BATTERY_PERCENT = %battery_percent%' } | Set-Content battery_alert.py"
+powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'CHECK_INTERVAL = \d+', 'CHECK_INTERVAL = %check_interval%' } | Set-Content battery_alert.py"
 
 echo.
-echo Configuration saved to config.py:
+echo Configuration saved:
 echo - Target Battery: %battery_percent%%% (Alert will trigger when battery reaches this level)
 echo - Check Interval: %check_interval% seconds (Time between checks)
 echo.

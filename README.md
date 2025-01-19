@@ -1,36 +1,41 @@
 # Battery Alert
 
-תוכנה פשוטה להתראה כאשר הסוללה מגיעה לאחוז טעינה מסוים בזמן טעינה.
+A simple utility that alerts when the battery reaches a certain percentage while charging.
 
-## דרישות מערכת
-- Python 3.6 ומעלה
+## System Requirements
+- Python 3.6 or higher
 - Windows
 
-## התקנה
-פשוט הפעל את הקובץ `setup.bat` על ידי לחיצה כפולה עליו או הרצה מ-Command Prompt.
-הסקריפט יבצע את הפעולות הבאות:
-1. התקנת החבילות הנדרשות
-2. הגדרת פרמטרים:
-   - אחוז הסוללה המטורגט (ברירת מחדל: 93)
-   - זמן בין בדיקות בשניות (ברירת מחדל: 120)
-3. הצעה להפעלה מיידית של התוכנה
+## Installation & Configuration
+Simply run `setup.bat` by double-clicking it or running from Command Prompt.
+The script will:
+1. Install required packages
+2. Configure settings:
+   - Target battery percentage (default: 93)
+   - Check interval in seconds (default: 120)
+3. Offer to run the program immediately
 
-## הגדרות
-ניתן לשנות את הגדרות התוכנה בשתי דרכים:
+## Automatic Startup (Optional)
+You have two options to make Battery Alert start automatically with Windows:
 
-1. **בזמן ההתקנה**: הרץ את `setup.bat` והזן את הערכים הרצויים כשתתבקש
+1. **Quick Setup** (Recommended):
+   - Run `setup_task.bat` as administrator
+   - This will automatically configure Battery Alert to start with Windows
+   - The program will check battery every 5 minutes when on AC power
 
-2. **לאחר ההתקנה**: ערוך ידנית את קובץ `config.py`:
-   - `TARGET_BATTERY_PERCENT`: אחוז הסוללה שממנו תופעל ההתראה
-   - `CHECK_INTERVAL`: זמן בשניות בין בדיקות
+2. **Manual Setup**:
+   - Follow the detailed instructions in `power-task-config.md`
+   - This gives you more control over the exact configuration
 
-## שימוש
+## Usage
 
-הרץ את התוכנה:
+Run the program:
 ```bash
 python battery_alert.py
 ```
 
-התוכנה תבדוק את מצב הסוללה לפי המרווח שהוגדר ותתריע כאשר הסוללה מגיעה לאחוז המטרה בזמן טעינה.
+The program will check the battery status at the configured interval and alert when the battery reaches the target percentage while charging.
 
-הצליל שיושמע נמצא בקובץ `Chime 1.mp3` 
+To change settings, simply run `setup.bat` again.
+
+The alert sound is stored in `Chime 1.mp3` 
