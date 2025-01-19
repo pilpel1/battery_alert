@@ -1,0 +1,25 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# קובץ הגדרות עליון
+root = true
+
+# כל הקבצים
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# קבצי פייתון
+[*.py]
+indent_style = tab
+indent_size = 4
+
+# קבצי bat
+[*.bat]
+indent_style = space
+indent_size = 4
+
+# קבצי markdown
+[*.md]
+trim_trailing_whitespace = false 

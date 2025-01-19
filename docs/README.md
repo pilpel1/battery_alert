@@ -22,6 +22,7 @@ battery_alert/
 │   └── uninstall.bat     # Uninstall utility
 ├── battery_alert.py      # Main program
 ├── requirements.txt     # Python package dependencies
+├── .editorconfig       # Code style settings
 └── LICENSE              # MIT License
 ```
 
@@ -73,6 +74,13 @@ To change the alert sound:
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Roadmap
+Future planned features:
+- System tray icon with quick controls
+- Temporary mute option
+- Custom notification sounds without file replacement
+- Windows toast notifications
+
 ---
 
 # התראת סוללה
@@ -99,6 +107,7 @@ battery_alert/
 │   └── uninstall.bat     # כלי להסרת התוכנה
 ├── battery_alert.py      # התוכנית הראשית
 ├── requirements.txt     # תלויות Python נדרשות
+├── .editorconfig       # הגדרות סגנון קוד
 └── LICENSE              # רישיון MIT
 ```
 
@@ -148,4 +157,11 @@ python battery_alert.py
 3. ודא שהקובץ נקרא בדיוק `alert_sound.mp3`
 
 ## רישיון
-פרויקט זה מופץ תחת רישיון MIT - ראה קובץ LICENSE לפרטים נוספים. 
+פרויקט זה מופץ תחת רישיון MIT - ראה קובץ LICENSE לפרטים נוספים.
+
+## מפת דרכים
+תכונות מתוכננות לעתיד:
+- אייקון במגש המערכת עם שליטה מהירה
+- אפשרות להשתקה זמנית
+- בחירת צלילי התראה ללא החלפת קבצים
+- התראות מערכת של חלונות 
