@@ -1,3 +1,90 @@
+# Configuring Automatic Startup in Task Scheduler
+This guide explains how to set up Battery Alert to run automatically on your system.
+
+## Important Note Before Setup
+1. Make sure you've installed the project according to README.md
+2. Run `setup.bat` and configure your desired parameters
+3. Verify the program works correctly in manual mode
+
+## Choosing a Setup Method
+There are two methods to automatically run the program. Choose the one that suits you:
+
+### Method 1: Periodic Check (Recommended)
+✅ Simple to set up
+✅ More stable
+✅ Less sensitive to brief power state changes
+❌ Up to 5 minutes delay in response
+
+### Method 2: Event-Based
+✅ Immediate response
+✅ More resource efficient
+❌ More complex to set up
+❌ Sensitive to brief power state changes
+
+## Task Configuration
+
+### Setup Steps:
+
+1. **Open Task Scheduler**
+   - Open Task Scheduler through Start Menu
+   - Select Create Task (not Basic Task)
+
+2. **General Settings**
+   - Name: Battery Alert Monitor
+   - Description: Monitors battery level and alerts when it reaches target percentage
+   - Check "Run with highest privileges"
+   - Select "Run only when user is logged on" to see the output window
+
+3. **Trigger Configuration**
+   According to your chosen method:
+
+   **Method 1 (Periodic Check)**:
+   - Click New in Triggers tab
+   - Choose Daily
+   - Set start time (e.g., 00:00)
+   - Under Advanced Settings:
+     - Check "Repeat task every: 5 minutes"
+     - Choose "for a duration of: 1 day"
+     - Make sure Enabled is checked
+
+   **Method 2 (Event-Based)**:
+   - Click New in Triggers tab
+   - Choose "On an event"
+   - Under Log select: System
+   - Under Source select: Kernel-Power
+   - Set Event ID: 105 (AC power connection)
+
+4. **Conditions Setup**
+   - In Conditions tab
+   - Under Power:
+     - Check "Start the task only if the computer is on AC power"
+     - Uncheck "Stop if the computer switches to battery power"
+
+5. **Actions Setup**
+   - Click New in Actions tab
+   - Action: Start a Program
+   - Program/script: Enter path to Python (e.g., `C:\Python39\python.exe`)
+   - Add arguments: Enter full path to `battery_alert.py`
+   - Start in: Enter full path to project directory
+
+   For example:
+   - Program/script: `C:\Python39\python.exe`
+   - Add arguments: `C:\path\to\battery_alert.py`
+   - Start in: `C:\path\to\project`
+
+6. **Additional Settings**
+   - Check "Allow task to be run on demand"
+   - Check "Run task as soon as possible after a scheduled start is missed"
+   - Select "Do not start a new instance"
+
+## Additional Tips
+1. If you want to change settings, run `setup.bat` again
+2. To test if the task works, click Run in the task window
+3. Check Task Scheduler logs if there are issues
+4. Make sure the paths you set in Actions are full and accurate paths
+
+---
+
 # הגדרת הפעלה אוטומטית ב-Task Scheduler
 מדריך זה מסביר איך להגדיר את Battery Alert לרוץ אוטומטית במערכת.
 
@@ -29,7 +116,7 @@
    - פתח את Task Scheduler דרך Start Menu
    - בחר Create Task (לא Basic Task)
 
-2. **הגדרות כלליות (General)**
+2. **הגדרות כלליות**
    - Name: Battery Alert Monitor
    - Description: מנטר את מצב הסוללה ומתריע כשהיא מגיעה לאחוז טעינה מסוים
    - סמן "Run with highest privileges"
@@ -72,7 +159,7 @@
    - Add arguments: `C:\path\to\battery_alert.py`
    - Start in: `C:\path\to\project`
 
-6. **הגדרות נוספות (Settings)**
+6. **הגדרות נוספות**
    - סמן "Allow task to be run on demand"
    - סמן "Run task as soon as possible after a scheduled start is missed"
    - בחר "Do not start a new instance"

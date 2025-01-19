@@ -13,7 +13,7 @@ def check_battery():
 	return battery.percent, battery.power_plugged
 
 def alert_when_needed():
-	sound_file = os.path.join(os.path.dirname(__file__), "Chime 1.mp3")
+	sound_file = os.path.join(os.path.dirname(__file__), "assets", "alert_sound.mp3")
 	print(f"Battery Alert started. Target battery level: {TARGET_BATTERY_PERCENT}%")
 	print(f"Checking every {CHECK_INTERVAL} seconds")
 	

@@ -4,7 +4,8 @@ echo.
 
 REM Installing required packages
 echo Installing required packages...
-pip install playsound==1.3.0 psutil==6.1.1
+cd ..
+pip install -r requirements.txt
 
 echo.
 echo === Configuration ===
@@ -31,6 +32,7 @@ if "%check_interval%"=="" (
 )
 
 REM Update battery_alert.py with new settings
+cd ..
 powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'TARGET_BATTERY_PERCENT = \d+', 'TARGET_BATTERY_PERCENT = %battery_percent%' } | Set-Content battery_alert.py"
 powershell -Command "(Get-Content battery_alert.py) | ForEach-Object { $_ -replace 'CHECK_INTERVAL = \d+', 'CHECK_INTERVAL = %check_interval%' } | Set-Content battery_alert.py"
 

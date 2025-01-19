@@ -1,5 +1,5 @@
 @echo off
-echo === Battery Alert Task Scheduler Setup ===
+echo === Battery Alert - Optional Quick Startup Setup ===
 echo.
 
 REM Check for admin privileges
@@ -12,13 +12,16 @@ if %errorLevel% neq 0 (
     exit /b 1
 )
 
-echo This script will set up Battery Alert to run automatically when Windows starts.
+echo This OPTIONAL script will set up Battery Alert to run automatically when Windows starts.
+echo You don't need to run this if you just want to run the program manually.
+echo.
 echo The program will check your battery every 5 minutes when connected to power.
 echo.
-echo Current settings from config.py will be used.
+echo Current settings from battery_alert.py will be used.
 echo.
 
-set "SCRIPT_PATH=%~dp0battery_alert.py"
+cd ..
+set "SCRIPT_PATH=%CD%\battery_alert.py"
 set "PYTHON_PATH=python"
 
 echo Checking Python installation...
@@ -37,7 +40,7 @@ echo - Trigger: At system startup
 echo - Repeat: Every 5 minutes
 echo - Run only when on AC power
 echo.
-set /p "confirm=Continue with installation? (Press Enter for Yes, or 'n' for No): "
+set /p "confirm=Continue with automatic startup setup? (Press Enter for Yes, or 'n' for No): "
 if /i "%confirm%"=="n" (
     echo Setup cancelled.
     pause
