@@ -13,7 +13,7 @@ Note: Running both manual and automatic? No problem! They work independently, ju
 
 ---
 
-היי! 👋 גם אתם תמיד שוכחים את המחשב מחובר יותר מדי זמן? גם אני! בדיוק בשביל זה יצרתי את הכלי הפשוט הזה שיודיע לכם מתי הסוללה טעונה מספיק. פשוט מגדירים פעם אחת ושוכחים - הוא כבר יצפצף כשצריך לנתק. מגניב, לא? 😎
+היי! 👋 גם אתם תמיד שוכחים את המחשב מחובר יותר מדי זמן? גם אני! בדיוק בשביל זה יצרתי את הכלי הפשוט הזה שיודיע לכם מתי הסוללה טעונה מספיק. פשוט מגדירים פעם אחת ושוכחים - הוא כבר ישמיע צליל נעים כשצריך לנתק. מגניב, לא? 😎
 
 ## איך זה עובד?
 1. אתם קובעים את אחוז הסוללה המועדף (95% כברירת מחדל)
@@ -109,6 +109,9 @@ To change the alert sound:
 2. Replace `assets/alert_sound.mp3` with your file
 3. Make sure to name it exactly `alert_sound.mp3`
 
+## Sound Credits
+The alert sound effect was generated using [LoudMe AI](https://loudme.ai/s/clzl29nd8003boj3ujku6ugvm).
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -195,6 +198,9 @@ python battery_alert.py
 1. הכן קובץ MP3 לבחירתך
 2. החלף את הקובץ `assets/alert_sound.mp3` בקובץ שלך
 3. ודא שהקובץ נקרא בדיוק `alert_sound.mp3`
+
+## קרדיטים
+צליל ההתראה נוצר באמצעות [LoudMe AI](https://loudme.ai/s/clzl29nd8003boj3ujku6ugvm).
 
 ## רישיון
 פרויקט זה מופץ תחת רישיון MIT - ראה קובץ LICENSE לפרטים נוספים.
