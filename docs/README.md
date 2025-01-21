@@ -1,6 +1,42 @@
 # Battery Alert
 
-A simple utility that alerts when the battery reaches a certain percentage while charging.
+Hey there! 👋 Tired of overcharging your laptop battery? Me too! That's why I created this simple tool that lets you know when your battery is charged enough. Just set it up once and forget about it - it'll ping you when it's time to unplug. Cool, right? 😎
+
+## How it works?
+1. You tell it your preferred battery level (95% by default)
+2. It runs quietly in the background
+3. When your battery hits that sweet spot while charging - DING! 🔔 Time to unplug!
+
+You can run it manually whenever you want, or let it start automatically when plugging in power. Your choice!
+
+Note: Running both manual and automatic? No problem! They work independently, just remember you might get double notifications 😉
+
+---
+
+היי! 👋 גם אתם תמיד שוכחים את המחשב מחובר יותר מדי זמן? גם אני! בדיוק בשביל זה יצרתי את הכלי הפשוט הזה שיודיע לכם מתי הסוללה טעונה מספיק. פשוט מגדירים פעם אחת ושוכחים - הוא כבר יצפצף כשצריך לנתק. מגניב, לא? 😎
+
+## איך זה עובד?
+1. אתם קובעים את אחוז הסוללה המועדף (95% כברירת מחדל)
+2. התוכנה רצה ברקע בשקט
+3. כשהסוללה מגיעה למטרה בזמן טעינה - דינג! 🔔 זמן לנתק!
+
+אפשר להריץ ידנית מתי שרוצים, או לתת לתוכנה להתחיל אוטומטית ברגע שמחברים לחשמל. הבחירה שלכם!
+
+הערה: מריצים גם ידנית וגם אוטומטית? אין בעיה! הם עובדים באופן עצמאי, רק זכרו שאולי תקבלו התראה כפולה 😉
+
+---
+
+## Quick Guide to Scripts
+- `setup.bat`: Your first stop! Run this to install and configure the program. Use it again whenever you want to change settings.
+- `optional_quick_startup.bat`: Want the program to start automatically when plugging in power? Run this once and you're good to go.
+- `uninstall.bat`: Breaking up? This will help you remove everything cleanly.
+
+## מדריך מהיר לסקריפטים
+- `setup.bat`: התחנה הראשונה! הריצו את זה להתקנה והגדרה. הריצו שוב כשתרצו לשנות הגדרות.
+- `optional_quick_startup.bat`: רוצים שהתוכנה תתחיל אוטומטית ברגע שמחברים לחשמל? הריצו את זה פעם אחת וסיימתם.
+- `uninstall.bat`: נפרדים? זה יעזור לכם להסיר הכל בצורה נקייה.
+
+---
 
 ## System Requirements
 - Python 3.6 or higher
@@ -31,9 +67,11 @@ Simply run `scripts/setup.bat` by double-clicking it or running from Command Pro
 The script will:
 1. Install required packages
 2. Configure settings:
-   - Target battery percentage (default: 93)
+   - Target battery percentage (default: 95)
    - Check interval in seconds (default: 120)
 3. Offer to run the program immediately
+
+Note: When running manually, the program uses these settings. The automatic startup (if configured) always checks every 5 minutes.
 
 ## Usage
 
@@ -116,9 +154,11 @@ battery_alert/
 הסקריפט יבצע:
 1. התקנת חבילות נדרשות
 2. הגדרת הפרמטרים:
-   - אחוז סוללה מטרה (ברירת מחדל: 93)
+   - אחוז סוללה מטרה (ברירת מחדל: 95)
    - זמן בין בדיקות בשניות (ברירת מחדל: 120)
 3. הצעה להפעלה מיידית של התוכנה
+
+הערה: בהרצה ידנית התוכנה משתמשת בהגדרות אלו. בהפעלה אוטומטית (אם הוגדרה) הבדיקה תתבצע כל 5 דקות.
 
 ## שימוש
 

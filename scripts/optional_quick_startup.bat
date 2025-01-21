@@ -43,8 +43,7 @@ if %errorLevel% neq 0 (
 echo.
 echo Task configuration:
 echo - Name: Battery Alert Monitor
-echo - Trigger: At system startup
-echo - Repeat: Every 5 minutes
+echo - Check interval: Every 5 minutes
 echo - Run only when on AC power
 echo.
 set /p "confirm=Continue with automatic startup setup? (Press Enter for Yes, or 'n' for No): "
