@@ -8,8 +8,8 @@ import ctypes
 
 
 # Default settings (can be changed by setup.bat)
-TARGET_BATTERY_PERCENT = 83  # Battery percentage that triggers the alert
-CHECK_INTERVAL = 60        # Time between checks in seconds
+TARGET_BATTERY_PERCENT = 95  # Battery percentage that triggers the alert
+CHECK_INTERVAL = 120        # Time between checks in seconds
 
 def hide_console():
 	try:

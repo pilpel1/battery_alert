@@ -16,28 +16,32 @@ echo Installing required packages...
 cd ..
 pip install -r requirements.txt
 
+REM Read current values from battery_alert.py
+for /f "tokens=3" %%a in ('findstr /C:"TARGET_BATTERY_PERCENT = " "%ROOT_DIR%\battery_alert.py"') do set current_battery=%%a
+for /f "tokens=3" %%a in ('findstr /C:"CHECK_INTERVAL = " "%ROOT_DIR%\battery_alert.py"') do set current_interval=%%a
+
 echo.
 echo === Configuration ===
 echo.
-echo Default settings:
-echo - Battery target: 93%%
-echo - Check interval: 120 seconds (2 minutes)
+echo Current settings:
+echo - Battery target: %current_battery%%%
+echo - Check interval: %current_interval% seconds
 echo.
-echo Press Enter to accept default values, or type a new value:
+echo Press Enter to keep current values, or type a new value:
 echo.
 
 REM Get user settings
-set /p "battery_percent=Target battery percentage [93]: "
+set /p "battery_percent=Target battery percentage [%current_battery%]: "
 if "%battery_percent%"=="" (
-    set battery_percent=93
-    echo Using default value: 93%%
+    set battery_percent=%current_battery%
+    echo Keeping current value: %current_battery%%%
 )
 
 echo.
-set /p "check_interval=Check interval in seconds [120]: "
+set /p "check_interval=Check interval in seconds [%current_interval%]: "
 if "%check_interval%"=="" (
-    set check_interval=120
-    echo Using default value: 120 seconds
+    set check_interval=%current_interval%
+    echo Keeping current value: %current_interval% seconds
 )
 
 REM Update battery_alert.py with new settings using absolute path constructed from relative position
