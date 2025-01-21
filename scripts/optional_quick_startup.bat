@@ -61,7 +61,7 @@ REM Delete existing task if it exists
 schtasks /delete /tn "Battery Alert Monitor" /f >nul 2>&1
 
 REM Create new task with working directory set
-schtasks /create /tn "Battery Alert Monitor" /tr "cmd /c cd /d \"%ROOT_DIR%\" && python battery_alert.py" /sc minute /mo 5 /rl highest /f /RU "SYSTEM" /st 00:00
+schtasks /create /tn "Battery Alert Monitor" /tr "cmd.exe /c cd /d \"%ROOT_DIR%\" && python battery_alert.py" /sc minute /mo 5 /rl highest /f /RU "%USERNAME%" /IT
 
 if %errorLevel% equ 0 (
     echo.
