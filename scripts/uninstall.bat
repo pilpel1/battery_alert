@@ -2,6 +2,18 @@
 echo === Battery Alert - Uninstall ===
 echo.
 
+REM Get the root directory (parent of scripts folder)
+set "ROOT_DIR=%~dp0.."
+
+REM Debug info
+echo Looking for requirements.txt in: %ROOT_DIR%
+if exist "%ROOT_DIR%\requirements.txt" (
+    echo Found requirements.txt file
+) else (
+    echo Could not find requirements.txt file
+)
+echo.
+
 REM Check for admin privileges for task removal
 net session >nul 2>&1
 set "IS_ADMIN=%errorLevel%"
@@ -38,8 +50,7 @@ if "%choice%"=="1" (
     
     echo.
     echo Uninstalling packages...
-    cd ..
-    pip uninstall -y -r requirements.txt
+    pip uninstall -y -r "%ROOT_DIR%\requirements.txt"
     
     echo.
     echo Packages uninstalled successfully!
