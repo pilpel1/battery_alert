@@ -54,7 +54,7 @@ def play_alert(sound_file):
 		return False
 
 def alert_when_needed():
-	sound_file = os.path.join(os.path.dirname(__file__), "assets", "alert_sound.mp3")
+	sound_file = os.path.join(os.path.dirname(__file__), "assets", "alert_sound.wav")
 	print(f"Battery Alert started. Target battery level: {TARGET_BATTERY_PERCENT}%")
 	print(f"Checking every {CHECK_INTERVAL} seconds")
 	print("Window will be minimized in 3 seconds...")

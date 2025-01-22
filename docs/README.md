@@ -48,7 +48,7 @@ Note: Running both manual and automatic? No problem! They work independently, ju
 ```
 battery_alert/
 ├── assets/
-│   └── alert_sound.mp3    # Alert sound file
+│   └── alert_sound.wav    # Alert sound file
 ├── docs/
 │   ├── README.md         # This file
 │   └── power-task-config.md  # Task Scheduler setup guide
@@ -105,9 +105,9 @@ Note: Administrator privileges are required to remove the scheduled task.
 
 ## Sound Alert Customization
 To change the alert sound:
-1. Prepare your custom MP3 file
-2. Replace `assets/alert_sound.mp3` with your file
-3. Make sure to name it exactly `alert_sound.mp3`
+1. Prepare your custom WAV file
+2. Replace `assets/alert_sound.wav` with your file
+3. Make sure to name it exactly `alert_sound.wav`
 
 ## Sound Credits
 The alert sound effect was generated using [LoudMe AI](https://loudme.ai/s/clzl29nd8003boj3ujku6ugvm).
@@ -138,7 +138,7 @@ Future planned features:
 ```
 battery_alert/
 ├── assets/
-│   └── alert_sound.mp3    # קובץ צליל ההתראה
+│   └── alert_sound.wav    # קובץ צליל ההתראה
 ├── docs/
 │   ├── README.md         # קובץ זה
 │   └── power-task-config.md  # מדריך להגדרת מתזמן המשימות
@@ -195,9 +195,9 @@ python battery_alert.py
 
 ## התאמת צליל ההתראה
 כדי להחליף את צליל ההתראה:
-1. הכן קובץ MP3 לבחירתך
-2. החלף את הקובץ `assets/alert_sound.mp3` בקובץ שלך
-3. ודא שהקובץ נקרא בדיוק `alert_sound.mp3`
+1. הכן קובץ WAV לבחירתך
+2. החלף את הקובץ `assets/alert_sound.wav` בקובץ שלך
+3. ודא שהקובץ נקרא בדיוק `alert_sound.wav`
 
 ## קרדיטים
 צליל ההתראה נוצר באמצעות [LoudMe AI](https://loudme.ai/s/clzl29nd8003boj3ujku6ugvm).
