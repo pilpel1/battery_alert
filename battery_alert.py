@@ -1,14 +1,14 @@
 import psutil
 import time
 import datetime
-from playsound import playsound
+import winsound
 import os
 import sys
 import ctypes
 
 
 # Default settings (can be changed by setup.bat)
-TARGET_BATTERY_PERCENT = 95  # Battery percentage that triggers the alert
+TARGET_BATTERY_PERCENT = 90  # Battery percentage that triggers the alert
 CHECK_INTERVAL = 120        # Time between checks in seconds
 
 def hide_console():
@@ -38,11 +38,19 @@ def play_alert(sound_file):
 	try:
 		if not os.path.exists(sound_file):
 			print(f"Error: Sound file not found: {sound_file}")
+			# נשמיע צליל ברירת מחדל של Windows במקרה שהקובץ לא נמצא
+			winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
 			return False
-		playsound(sound_file)
+		# משמיע את הצליל המותאם אישית
+		winsound.PlaySound(sound_file, winsound.SND_FILENAME)
 		return True
 	except Exception as e:
 		print(f"Error playing sound: {str(e)}")
+		# במקרה של שגיאה, ננסה להשמיע צליל ברירת מחדל
+		try:
+			winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS)
+		except:
+			pass
 		return False
 
 def alert_when_needed():
