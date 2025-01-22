@@ -33,27 +33,38 @@ if "%choice%"=="1" (
         exit /b 1
     )
     echo Removing scheduled task...
-    schtasks /delete /tn "Battery Alert Monitor" /f
+    schtasks /delete /tn "Battery Alert Monitor" /f >nul 2>&1
     if %errorLevel% equ 0 (
         echo Task removed successfully!
     ) else (
-        echo Task not found or already removed.
+        echo Failed to remove task. Task might not exist or access was denied.
+        pause
+        exit /b 1
     )
 ) else if "%choice%"=="2" (
-    if %IS_ADMIN% neq 0 (
-        echo Note: Administrator privileges required to remove the task.
-        echo The task might not be removed, but packages will be uninstalled.
-    ) else (
+    if %IS_ADMIN% equ 0 (
         echo Removing scheduled task...
         schtasks /delete /tn "Battery Alert Monitor" /f >nul 2>&1
+        if %errorLevel% equ 0 (
+            echo Task removed successfully!
+        ) else (
+            echo Note: Task removal failed. Task might not exist.
+        )
+    ) else (
+        echo Note: Administrator privileges required to remove the task.
+        echo The task will not be removed, but packages will be uninstalled.
     )
     
     echo.
     echo Uninstalling packages...
     pip uninstall -y -r "%ROOT_DIR%\requirements.txt"
+    if %errorLevel% equ 0 (
+        echo Packages uninstalled successfully!
+    ) else (
+        echo Warning: Some packages might not have been uninstalled properly.
+    )
     
     echo.
-    echo Packages uninstalled successfully!
     echo Note: Project files were not deleted.
     echo You can manually delete the project folder if needed.
 ) else (
